@@ -48,7 +48,9 @@ public class MainWindow extends JFrame implements MouseMotionListener, MouseList
     clickPoint = currentHeight;
   }
 
-  public void mouseClicked(MouseEvent me){}
+  public void mouseClicked(MouseEvent me){
+
+  }
 
   public void mouseReleased(MouseEvent me){}
 
@@ -59,7 +61,9 @@ public class MainWindow extends JFrame implements MouseMotionListener, MouseList
   public void mouseMoved(MouseEvent me){}
   
   public void mouseDragged(MouseEvent me){
+    if()//Height conditions
     currentHeight = clickPoint+me.getY()-y;
+  System.out.println(currentHeight);
     repaint();
   }
 
