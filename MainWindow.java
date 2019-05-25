@@ -11,6 +11,8 @@ public class MainWindow extends JFrame implements MouseMotionListener, MouseList
   BufferedImage[] screens;
   int currentScreen;
   int currentHeight;
+  int y;
+  int clickPoint;
 
   public MainWindow(){
     super("Tellecole Demo: BETA TESTING");
@@ -18,6 +20,7 @@ public class MainWindow extends JFrame implements MouseMotionListener, MouseList
     screens = new BufferedImage[5];
     currentScreen = 0;
     currentHeight = 0;
+    clickPoint = 0;
     try{
       screens[0] = ImageIO.read(new File(""));//Waiting for pictures
     }catch(IOException e){
@@ -35,12 +38,14 @@ public class MainWindow extends JFrame implements MouseMotionListener, MouseList
   public void paint(Graphics g){
     g.setColor(new Color(0, 0, 0));
     g.fillRect(0, 0, getWidth(), getHeight());
-    g.drawImage(screens[currentScreen], currentHeight, 0, 500, 10000, null);
+    g.setColor(new Color(0, 0, 200));
+    g.fillRect(0, currentHeight, getWidth(), getHeight());
+    g.drawImage(screens[currentScreen], 0, currentHeight, 500, 10000, null);
   }
 
   public void mousePressed(MouseEvent me){
-    int x = me.getX();
-    int y = me.getY();  
+    y = me.getY();
+    clickPoint = currentHeight;
   }
 
   public void mouseClicked(MouseEvent me){}
@@ -54,7 +59,8 @@ public class MainWindow extends JFrame implements MouseMotionListener, MouseList
   public void mouseMoved(MouseEvent me){}
   
   public void mouseDragged(MouseEvent me){
-    int y = me.getY();
+    currentHeight = clickPoint+me.getY()-y;
+    repaint();
   }
 
   public static void main(String[]args){
