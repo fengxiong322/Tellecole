@@ -23,9 +23,7 @@ public class MainWindow extends JFrame implements MouseMotionListener, MouseList
 
   public MainWindow(){
     super("Tellecole Demo: BETA TESTING");
-    sizeY = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()-10;
-    sizeX = sizeY*5/12;
-    setSize(sizeX, sizeY);
+    setSize(500, 700);
     screens = new Screen[4];
     currentScreen = 0;
     currentHeight = 0;
@@ -99,7 +97,8 @@ public class MainWindow extends JFrame implements MouseMotionListener, MouseList
   public void mouseMoved(MouseEvent me){}
   
   public void mouseDragged(MouseEvent me){
-    currentHeight = clickPoint+me.getY()-y;
+    if(clickPoint+me.getY()-y<=30 && clickPoint+me.getY()-y+700 >= screens[currentScreen].height())
+      currentHeight = clickPoint+me.getY()-y;
     repaint();
   }
 

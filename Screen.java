@@ -41,7 +41,16 @@ public class Screen{
 	}
 
 	public void draw(Graphics g, int height){
-		g.drawImage(image, 0, height, null);
+		BufferedImage canvas = new BufferedImage(1000, 1000, BufferedImage.TYPE_INT_RGB);
+		Graphics g1 = canvas.getGraphics();
+		g1.setColor(new Color(255, 255, 255));
+  	g1.fillRect(0, 0, 500, 700);
+		g1.drawImage(image, 0, height, 500, height(), null);
+		g.drawImage(canvas, 0, 0, null);
+	}
+
+	public int height(){
+		return (int)(image.getHeight()*(480.0/image.getWidth()));
 	}
 
 	public int findNextScreen(int x, int y){
