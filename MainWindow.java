@@ -24,7 +24,7 @@ public class MainWindow extends JFrame implements MouseMotionListener, MouseList
   public MainWindow(){
     super("Tellecole Demo: BETA TESTING");
     setSize(500, 700);
-    screens = new Screen[4];
+    screens = new Screen[5];
     currentScreen = 0;
     currentHeight = 0;
     clickPoint = 0;
@@ -33,6 +33,7 @@ public class MainWindow extends JFrame implements MouseMotionListener, MouseList
       screens[1] = new Screen(ImageIO.read(new File("logo.jpg")), "logo.txt");
       screens[2] = new Screen(ImageIO.read(new File("announcements.png")), "announcements.txt");
       screens[3] = new Screen(ImageIO.read(new File("teacher.png")), "teacher.txt");
+      screens[4] = new Screen(ImageIO.read(new File("FAQ.png")), "FAQ.txt");
     }catch(IOException e){
       System.out.println("A Fatal Error Has Occured. Images failed to load");
       e.printStackTrace();
